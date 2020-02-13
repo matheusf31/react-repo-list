@@ -4,6 +4,8 @@
 
 - Aplicação que se conecta com a API REST do github, para extrairmos repositórios;
 
+- Obs.: o código está cheio de comentários porque ele servirá para meus estudos posteriormente.
+
 #### Funcionalidades:
 
 - React-router-dom: utilizado para fazer o roteamento das páginas da aplicação (teoricamente o react funciona em apenas uma página);
