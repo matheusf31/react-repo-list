@@ -1,9 +1,19 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import api from '../../services/api';
 
 // o match está dentro de props e dentro de match tem params, onde estarão os parâmetros;
 // estou passando parâmetros porque não estou chamando diretamente esse componente, e sim fazendo o Link dele
 export default class Repository extends Component {
+  static propTypes = {
+    // shape é para se referir a um objeto
+    match: PropTypes.shape({
+      params: PropTypes.shape({
+        repository: PropTypes.string,
+      }),
+    }).isRequired,
+  };
+
   state = {
     repository: {},
     issues: [],
