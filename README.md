@@ -1,8 +1,10 @@
-### Projeto do módulo 5 do bootcamp GoStack da RocketSeat
+### Desafio 5 do bootcamp GoStack da RocketSeat
 
 #### Descrição:
 
 - Aplicação que se conecta com a API REST do github, para extrair repositórios;
+
+- Link com a descrição do desafio: [Desafio 5](https://github.com/Rocketseat/bootcamp-gostack-desafio-05#-entrega)
 
 - Obs.: o código está cheio de comentários porque ele servirá para meus estudos posteriormente.
 
