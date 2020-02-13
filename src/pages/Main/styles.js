@@ -61,7 +61,7 @@ export const SubmitButton = styled.button.attrs(props => ({
   justify-content: center;
   align-items: center;
 
-  /** o & se refere ao próprio elemento, o [disabled] se refere a uma propriedade */
+  /** o & se refere ao elemento atual, o [disabled] se refere a uma propriedade */
   &[disabled] {
     cursor: not-allowed;
     opacity: 0.6;
@@ -88,7 +88,36 @@ export const SubmitButton = styled.button.attrs(props => ({
   */
 `;
 
+export const List = styled.ul`
+  list-style: none;
+  margin-top: 30px;
+
+  li {
+    padding: 15px 0;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+
+    /** & -> referenciando ao li atual; + li -> quero pegar qualquer li que seja seguido por um li anterior (o primeiro fica excluido)  */
+    & + li {
+      border-top: 1px solid #eee;
+    }
+
+    a {
+      color: #7159c1;
+      text-decoration: none;
+
+      &:hover {
+        color: #7139c1;
+      }
+    }
+  }
+`;
+
 /*
+Dicas:
+
 export const Title = styled.h1`
   podemos fazer uma condição aqui: a função recebe por padrão todas as propriedades do elemento
   color: ${props => (props.error ? 'red' : '#7159c1')};
