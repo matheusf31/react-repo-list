@@ -5,7 +5,8 @@ import { Link } from 'react-router-dom';
 import api from '../../services/api';
 
 // o container será utilizado por volta de toda a aplicação e vai servir para fazer alguns alinhamentos
-import { Container, Form, SubmitButton, List } from './styles';
+import Container from '../../components/Container';
+import { Form, SubmitButton, List } from './styles';
 
 export default class Main extends Component {
   state = {
