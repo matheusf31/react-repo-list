@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, { keyframes, css } from 'styled-components';
 
 export const Container = styled.div`
   /** criando um box */
@@ -35,34 +35,62 @@ export const Form = styled.form`
   }
 `;
 
-// podemos passar os atributos dos elementos dentro do css usando attrs
-export const SubmitButton = styled.button.attrs({
+// posso utilizar igual o keyframes do css
+const rotate = keyframes`
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+`;
+
+// podemos passar os atributos dos elementos dentro do css usando attrs e podemos acessar as propriedades passadas no component também utilizando props
+export const SubmitButton = styled.button.attrs(props => ({
   type: 'submit',
-})`
+  disabled: props.loading,
+}))`
   background: #7159c1;
   border: 0;
   padding: 0 15px;
   margin-left: 10px;
   border-radius: 4px;
-  color: #fff;
 
   display: flex;
   justify-content: center;
   align-items: center;
+
+  /** o & se refere ao próprio elemento, o [disabled] se refere a uma propriedade */
+  &[disabled] {
+    cursor: not-allowed;
+    opacity: 0.6;
+
+    svg {
+      animation: ${rotate} 2s linear infinite;
+    }
+  }
+
+  /**
+      usando o svg acima foi como eu fiz, pode ser feito assim:
+      somente quando loading estiver como true
+      como é um conjunto de propriedades do css temos que usar o 'css'
+  */
+
+  /* usando as propriedades dos componentes
+  ${props =>
+    props.loading &&
+    css`
+      svg {
+        animation: ${rotate} 2s linear infinite;
+      }
+    `}
+  */
 `;
 
-// export const Title = styled.h1`
-//   /**
-//     CSS vai aqui dentro
-//   */
-//   /* font-size: 24px;
-//   podemos fazer uma condição aqui: a função recebe por padrão todas as propriedades do elemento
-//   color: ${props => (props.error ? 'red' : '#7159c1')};
-//   font-family: Arial, Helvetica, sans-serif; */
-//   /**
-//     Podemos editar outros elementos (encadeamento) que estão dentro de Title (h1)
-//   */
-//   /* small {
-//     color: green;
-//   } */
-// `;
+/*
+export const Title = styled.h1`
+  podemos fazer uma condição aqui: a função recebe por padrão todas as propriedades do elemento
+  color: ${props => (props.error ? 'red' : '#7159c1')};
+`;
+*/

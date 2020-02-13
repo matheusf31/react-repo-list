@@ -1,31 +1,75 @@
-import React from 'react';
+import React, { Component } from 'react';
+import { FaGithubAlt, FaPlus, FaSpinner } from 'react-icons/fa';
 
-import { FaGithubAlt, FaPlus } from 'react-icons/fa';
+import api from '../../services/api';
 
 // o container será utilizado por volta de toda a aplicação e vai servir para fazer alguns alinhamentos
 import { Container, Form, SubmitButton } from './styles';
 
-export default function Main() {
-  return (
-    <Container>
-      <h1>
-        <FaGithubAlt />
-        Repositórios
-      </h1>
+export default class Main extends Component {
+  state = {
+    newRepo: '',
+    repositories: [],
+    loading: false,
+  };
 
-      {/** o form aqui terá sua estilização própria e encadeamentos próprios */}
-      <Form onSubmit={() => {}}>
-        <input type="text" placeholder="Adicionar repositório" />
+  handleInputChange = e => {
+    this.setState({ newRepo: e.target.value });
+  };
 
-        {/** criado como componente porque quero que a estilização mude >baseado em algumas propriedades<
-         * ex.: enquanto a requisição estiver sendo feita quero que o botão fique 'inclicável' e apareça apagado
-         */}
-        <SubmitButton disable>
-          <FaPlus colo="#FFF" size={14} />
-        </SubmitButton>
-      </Form>
-    </Container>
-  );
+  handleSubmit = async e => {
+    e.preventDefault();
+
+    this.setState({ loading: true });
+
+    const { newRepo, repositories } = this.state;
+
+    const response = await api.get(`/repos/${newRepo}`);
+
+    const data = {
+      name: response.data.full_name,
+    };
+
+    this.setState({
+      repositories: [...repositories, data],
+      newRepo: '',
+      loading: false,
+    });
+  };
+
+  render() {
+    const { newRepo, loading } = this.state;
+
+    return (
+      <Container>
+        <h1>
+          <FaGithubAlt />
+          Repositórios
+        </h1>
+
+        {/** o form aqui terá sua estilização própria e encadeamentos próprios, por isso ele é um componente */}
+        <Form onSubmit={this.handleSubmit}>
+          <input
+            type="text"
+            placeholder="Adicionar repositório"
+            value={newRepo}
+            onChange={this.handleInputChange}
+          />
+
+          {/** criado como componente porque quero que a estilização mude >baseado em algumas propriedades<
+           * ex.: enquanto a requisição estiver sendo feita quero que o botão fique 'inclicável' e apareça apagado
+           */}
+          <SubmitButton loading={loading}>
+            {loading ? (
+              <FaSpinner color="#FFF" size={14} />
+            ) : (
+              <FaPlus color="#FFF" size={14} />
+            )}
+          </SubmitButton>
+        </Form>
+      </Container>
+    );
+  }
 }
 
 /**
@@ -40,5 +84,4 @@ export default function Main() {
             ...
 
  *  -> Quando queremos estilizar um elemento baseado em suas propriedades (ex.: o SubmitButton)
- *
  */

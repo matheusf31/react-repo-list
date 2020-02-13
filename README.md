@@ -6,6 +6,7 @@
 
 #### Funcionalidades:
 
-- react-router-dom: utilizado para fazer o roteamento das páginas da aplicação (teoricamente o react funciona em apenas uma página);
-- styled-components: para fazer a estilização das páginas react separadamente;
-- react-icons: pacotes de fontes de ícones mais famosos (font awesome, material icons, etc)
+- React-router-dom: utilizado para fazer o roteamento das páginas da aplicação (teoricamente o react funciona em apenas uma página);
+- Styled-components: para fazer a estilização das páginas react separadamente;
+- React-icons: pacotes de fontes de ícones mais famosos (font awesome, material icons, etc);
+- Axios: para fazer requisições a API's externas;
