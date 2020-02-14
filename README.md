@@ -2,7 +2,7 @@
 
 #### Aplicação:
 
-<img src="screenshots/Screenshot from 2020-02-14 17-25-46.png" width="50%">
+<img src="screenshots/Screenshot from 2020-02-14 17-25-46.png" width="33%"> <img src="screenshots/Screenshot from 2020-02-14 17-25-53.png" width="33%"> <img src="screenshots/Screenshot from 2020-02-14 17-26-23.png" width="33%">
 
 #### Descrição:
 
