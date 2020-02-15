@@ -12,7 +12,7 @@
 
 - Obs.: o código está cheio de comentários porque ele servirá para meus estudos posteriormente.
 
-#### Funcionalidades:
+#### Ferramentas:
 
 - [React-router-dom](https://www.npmjs.com/package/react-router-dom): utilizado para fazer o roteamento das páginas da aplicação (teoricamente o react funciona em apenas uma página);
 - [Styled-components](https://styled-components.com/): para fazer a estilização das páginas react separadamente;
